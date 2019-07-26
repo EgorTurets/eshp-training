@@ -10,8 +10,9 @@ namespace Tests
         }
 
         [Test]
-        public void Test1()
+        public void UserService_GetProductById_EmptyInput_Error()
         {
+
             Assert.Pass();
         }
     }
