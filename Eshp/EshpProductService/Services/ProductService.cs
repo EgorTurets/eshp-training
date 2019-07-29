@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EshpProductCommon;
 using EshpProductProvider;
+using EshpProductService.Interfaces;
 
 namespace EshpProductService.Services
 {
@@ -14,11 +15,13 @@ namespace EshpProductService.Services
             _productProvider = productProvider;
         }
 
+        #region Gets
+
         public ProductBase GetProductById(int id)
         {
             if (id < 1)
             {
-                throw new ArgumentException("id must be more than 1");
+                throw new ArgumentException($"{nameof(id)} must be more than 0");
             }
 
             return _productProvider.GetById(id);
@@ -26,18 +29,32 @@ namespace EshpProductService.Services
 
         public IList<ProductBase> GetProducts(int count, int page)
         {
-            throw new System.NotImplementedException();
+            if (count < 1 || page < 1)
+            {
+                throw new ArgumentException($"{nameof(count)} and {nameof(page)} must be more than 0");
+            }
+
+            return _productProvider.Get(count, page);
         }
 
         public int GetProductsCount()
         {
-            throw new System.NotImplementedException();
+            return _productProvider.GetCount();
         }
 
         public IList<ProductBase> GetProductsByCompany(int companyId)
         {
-            throw new System.NotImplementedException();
+            if (companyId < 1)
+            {
+                throw new ArgumentException($"{nameof(companyId)} must be more than 0");
+            }
+
+            return _productProvider.GetByCompany(companyId);
         }
+
+        #endregion
+        
+        #region CommonProductActions
 
         public ProductBase CreateProduct(ProductBase product)
         {
@@ -53,6 +70,10 @@ namespace EshpProductService.Services
         {
             throw new System.NotImplementedException();
         }
+
+        #endregion
+
+        #region CompanyProductActions
 
         public Product AddProductToCompany(int productId, int companyId)
         {
@@ -73,5 +94,8 @@ namespace EshpProductService.Services
         {
             throw new System.NotImplementedException();
         }
+
+        #endregion
+
     }
 }

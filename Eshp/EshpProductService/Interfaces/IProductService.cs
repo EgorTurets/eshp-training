@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using EshpProductCommon;
 
-namespace EshpProductService
+namespace EshpProductService.Interfaces
 {
     public interface IProductService
     {
+        #region Gets
+
         ProductBase GetProductById(int id);
         IList<ProductBase> GetProducts(int count, int page);
         int GetProductsCount();
         IList<ProductBase> GetProductsByCompany(int companyId);
+
+        #endregion
 
         #region CommonProductActions
 
