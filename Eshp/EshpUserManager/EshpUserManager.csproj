@@ -17,6 +17,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\EshpProductService\EshpProductService.csproj" />
     <ProjectReference Include="..\UserService\UserService.csproj" />
   </ItemGroup>
 

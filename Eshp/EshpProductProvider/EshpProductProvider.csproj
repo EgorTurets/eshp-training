@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EshpCommon\EshpCommon.csproj" />
     <ProjectReference Include="..\EshpProductCommon\EshpProductCommon.csproj" />
-    <ProjectReference Include="..\EshpProductProvider\EshpProductProvider.csproj" />
   </ItemGroup>
 
 </Project>
