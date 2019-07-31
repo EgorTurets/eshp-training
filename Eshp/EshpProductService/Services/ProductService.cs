@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EshpProductCommon;
 using EshpProductProvider;
 using EshpProductService.Interfaces;
@@ -58,17 +59,39 @@ namespace EshpProductService.Services
 
         public ProductBase CreateProduct(ProductBase product)
         {
-            throw new System.NotImplementedException();
+            var isProductValid = ValidateProductBase(product);
+
+            ProductBase result = null;
+            if (isProductValid)
+                result = _productProvider.CreateBaseProduct(product);
+
+            return result;
         }
 
         public bool UpdateProduct(int productId, ProductBase product)
         {
-            throw new System.NotImplementedException();
+            if (productId < 1)
+            {
+                throw new ArgumentException($"{nameof(productId)} must be more than 0");
+            }
+
+            var isProductValid = ValidateProductBase(product);
+
+            bool result = false;
+            if (isProductValid)
+                result = _productProvider.UpdateBaseProduct(productId, product);
+
+            return result;
         }
 
         public bool DeleteProduct(int productId)
         {
-            throw new System.NotImplementedException();
+            if (productId < 1)
+            {
+                throw new ArgumentException($"{nameof(productId)} must be more than 0");
+            }
+
+            return _productProvider.DeleteBaseProduct(productId);
         }
 
         #endregion
@@ -93,6 +116,28 @@ namespace EshpProductService.Services
         public int GetProductsCountForCompany(int companyId)
         {
             throw new System.NotImplementedException();
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private bool ValidateProductBase(ProductBase product)
+        {
+            if (product == null)
+            {
+                throw new ArgumentException($"{nameof(product)} cannot be Null");
+            }
+            if (String.IsNullOrWhiteSpace(product.Name))
+            {
+                throw new ArgumentException($"{nameof(product.Name)} cannot be empty");
+            }
+            if (product.Offers?.Any(o => o.Id < 1) ?? false)
+            {
+                throw new ArgumentException($"Id of {product.Offers} must be more than 0");
+            }
+
+            return true;
         }
 
         #endregion

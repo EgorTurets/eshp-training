@@ -142,7 +142,7 @@ namespace Tests
         [Test]
         public void ProductService_CreateProduct_FailedRequest_Null()
         {
-            var testProduct = new ProductBase() { Name = It.IsAny<string>() };
+            var testProduct = new ProductBase() { Name = "test", };
 
             var providerMock = new Mock<IProductProvider>();
             providerMock
@@ -170,10 +170,14 @@ namespace Tests
         public void ProductService_UpdateProduct_ProductIdMoreThan0_True(int id)
         {
             var providerMock = new Mock<IProductProvider>();
-
+            providerMock
+                .Setup(a => a.UpdateBaseProduct(It.IsAny<int>(), It.IsAny<ProductBase>()))
+                .Returns(true);
             IProductService service = new ProductService(providerMock.Object);
 
-            Assert.That(() => service.UpdateProduct(id, It.IsAny<ProductBase>()), Is.True);
+            Assert.That(() => 
+                service.UpdateProduct(id, new ProductBase{ Name="name" }), 
+                Is.True);
         }
 
         [Test]
@@ -207,7 +211,7 @@ namespace Tests
             var testProduct = new ProductBase() { Name = It.IsAny<string>(), Offers = offers };
             IProductService service = new ProductService(providerMock.Object);
 
-            Assert.Throws<ApplicationException>(() => service.UpdateProduct(It.IsAny<int>(), testProduct));
+            Assert.Throws<ArgumentException>(() => service.UpdateProduct(It.IsAny<int>(), testProduct));
         }
 
         [TestCase(true, ExpectedResult = true)]
@@ -221,7 +225,7 @@ namespace Tests
 
             IProductService service = new ProductService(providerMock.Object);
 
-            return service.UpdateProduct(It.IsAny<int>(), It.IsAny<ProductBase>());
+            return service.UpdateProduct(1, new ProductBase {Name = "name"});
         }
 
         [Category("DeleteProduct")]
@@ -237,15 +241,15 @@ namespace Tests
         }
 
         [Category("DeleteProduct")]
-        [Test]
-        public void ProductService_DeleteProduct_IdMoreThan0_True()
+        [TestCase(1)]
+        [TestCase(10)]
+        public void ProductService_DeleteProduct_IdMoreThan0_True(int id)
         {
             var providerMock = new Mock<IProductProvider>();
             providerMock
                 .Setup(a => a.DeleteBaseProduct(It.IsAny<int>()))
                 .Returns(true);
             IProductService service = new ProductService(providerMock.Object);
-            var id = It.Is<int>(x => x > 0);
 
             Assert.That(() => service.DeleteProduct(id), Is.True);
         }
@@ -262,7 +266,7 @@ namespace Tests
 
             IProductService service = new ProductService(providerMock.Object);
 
-            return service.DeleteProduct(It.IsAny<int>());
+            return service.DeleteProduct(1);
         }
 
         #endregion
