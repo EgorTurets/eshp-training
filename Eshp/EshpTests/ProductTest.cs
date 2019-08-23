@@ -1,14 +1,12 @@
-using System;
 using EshpProductCommon;
 using EshpProductProvider;
-using EshpProductService;
+using EshpProductService.Interfaces;
 using EshpProductService.Services;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using EshpProductService.Interfaces;
-using NUnit.Framework.Internal.Builders;
 
 namespace Tests
 {
