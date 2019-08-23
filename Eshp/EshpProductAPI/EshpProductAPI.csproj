@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EshpProductCommon\EshpProductCommon.csproj" />
+    <ProjectReference Include="..\EshpProductService\EshpProductService.csproj" />
+  </ItemGroup>
+
 </Project>

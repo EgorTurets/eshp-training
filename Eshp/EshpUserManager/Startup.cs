@@ -36,9 +36,6 @@ namespace EshpUserManager
             //services.AddDbContext<EshpUserCompanyContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddDefaultIdentity<IdentityRole>()
-            //    .AddEntityFrameworkStores<EshpUserCompanyContext>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

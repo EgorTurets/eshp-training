@@ -17,7 +17,6 @@ namespace EshpUserManager.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<EshpUserManagerContext>(options =>
                     options.UseSqlServer(
-                //context.Configuration.GetConnectionString("EshpUserManagerContextConnection")));
                 context.Configuration.GetConnectionString("EshpAzure")));
 
                 services.AddDefaultIdentity<IdentityUser>()
