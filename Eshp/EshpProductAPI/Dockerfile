@@ -6,7 +6,7 @@ EXPOSE 443
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
 COPY ["EshpProductAPI.csproj", "EshpProductAPI/"]
-RUN dotnet restore "EshpProductAPI.csproj"
+RUN dotnet restore "EshpProductAPI/EshpProductAPI.csproj"
 COPY . .
 WORKDIR "/src/EshpProductAPI"
 RUN dotnet build "EshpProductAPI.csproj" -c Release -o /app
