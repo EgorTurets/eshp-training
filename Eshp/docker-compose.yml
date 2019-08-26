@@ -6,8 +6,6 @@ services:
     build:
       context: ./usercompany
       dockerfile: EshpUserManager/Dockerfile
-      depends_on: 
-        - eshpproductapi
 
   eshpproductapi:
     image: ${DOCKER_REGISTRY-}eshpproductapi
