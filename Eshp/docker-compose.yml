@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  eshpusermanager:
+    image: ${DOCKER_REGISTRY-}eshpusermanager
+    build:
+      context: ./usercompany
+      dockerfile: EshpUserManager/Dockerfile
+      depends_on: 
+        - eshpproductapi
+
+  eshpproductapi:
+    image: ${DOCKER_REGISTRY-}eshpproductapi
+    build:
+      context: ./product
+      dockerfile: EshpProductAPI/Dockerfile
+

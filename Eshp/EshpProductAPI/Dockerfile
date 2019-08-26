@@ -5,18 +5,18 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY ["EshpProductAPI.csproj", "EshpProductAPI/"]
-COPY ["/app/src/EshpProductCommon/EshpProductCommon.csproj", "EshpProductCommon/"]
-COPY ["/EshpCommon/EshpCommon.csproj", "EshpCommon/"]
-COPY ["/EshpProductService/EshpProductService.csproj", "EshpProductService/"]
-COPY ["/EshpProductProvider/EshpProductProvider.csproj", "EshpProductProvider/"]
-RUN dotnet restore "EshpProductAPI/EshpProductAPI.csproj"
+COPY EshpProductAPI/EshpProductAPI.csproj EshpProductAPI/
+COPY EshpProductCommon/EshpProductCommon.csproj EshpProductCommon/
+COPY EshpCommon/EshpCommon.csproj EshpCommon/
+COPY EshpProductService/EshpProductService.csproj EshpProductService/
+COPY EshpProductProvider/EshpProductProvider.csproj EshpProductProvider/
+RUN dotnet restore EshpProductAPI/EshpProductAPI.csproj
 COPY . .
-WORKDIR "/src/EshpProductAPI"
-RUN dotnet build "EshpProductAPI.csproj" -c Release -o /app
+WORKDIR /src/EshpProductAPI
+RUN dotnet build EshpProductAPI.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "EshpProductAPI.csproj" -c Release -o /app
+RUN dotnet publish EshpProductAPI.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
