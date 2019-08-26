@@ -6,7 +6,7 @@ EXPOSE 443
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
 COPY ["EshpProductAPI.csproj", "EshpProductAPI/"]
-COPY ["/EshpProductCommon/EshpProductCommon.csproj", "EshpProductCommon/"]
+COPY ["/app/src/EshpProductCommon/EshpProductCommon.csproj", "EshpProductCommon/"]
 COPY ["/EshpCommon/EshpCommon.csproj", "EshpCommon/"]
 COPY ["/EshpProductService/EshpProductService.csproj", "EshpProductService/"]
 COPY ["/EshpProductProvider/EshpProductProvider.csproj", "EshpProductProvider/"]
