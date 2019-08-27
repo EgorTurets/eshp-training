@@ -25,7 +25,8 @@ stages:
     - task: DockerCompose@0
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: '0ca027eb-05f4-45e7-8fa6-18ae47b5f430'
+        azureSubscription: 'Azure subscription 1(4e8499cd-4e5b-4067-9614-57fc34c7dad0)'
         azureContainerRegistry: '{"loginServer":"registry20190813033530.azurecr.io", "id" : "/subscriptions/4e8499cd-4e5b-4067-9614-57fc34c7dad0/resourceGroups/EshpResourceGroup/providers/Microsoft.ContainerRegistry/registries/registry20190813033530"}'
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
+
