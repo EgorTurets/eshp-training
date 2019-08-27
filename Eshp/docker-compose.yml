@@ -4,12 +4,12 @@ services:
   eshpusermanager:
     image: ${DOCKER_REGISTRY-}eshpusermanager
     build:
-      context: .src/UserCompany
-      dockerfile: Dockerfile
+      context: .src
+      dockerfile: DockerfileUserCompany
 
   eshpproductapi:
     image: ${DOCKER_REGISTRY-}eshpproductapi
     build:
-      context: .src/Product
-      dockerfile: Dockerfile
+      context: .src
+      dockerfile: DockerfileProduct
 

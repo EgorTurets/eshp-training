@@ -5,11 +5,11 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY EshpProductAPI/EshpProductAPI.csproj EshpProductAPI/
-COPY EshpProductCommon/EshpProductCommon.csproj EshpProductCommon/
-COPY ./EshpCommon/EshpCommon.csproj EshpCommon/
-COPY EshpProductService/EshpProductService.csproj EshpProductService/
-COPY EshpProductProvider/EshpProductProvider.csproj EshpProductProvider/
+COPY Product/EshpProductAPI/EshpProductAPI.csproj EshpProductAPI/
+COPY Product/EshpProductCommon/EshpProductCommon.csproj EshpProductCommon/
+COPY Product/EshpProductService/EshpProductService.csproj EshpProductService/
+COPY Product/EshpProductProvider/EshpProductProvider.csproj EshpProductProvider/
+COPY Common/EshpCommon/EshpCommon.csproj EshpCommon/
 RUN dotnet restore EshpProductAPI/EshpProductAPI.csproj
 COPY . .
 WORKDIR /src/EshpProductAPI
