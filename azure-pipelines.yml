@@ -22,11 +22,10 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: Docker Compose@0
-      displayName: 'Build images'
+    - task: DockerCompose@0
       inputs:
-        action: 'Build services'
-        containerregistrytype: Azure Container Registry
-        azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-        azureContainerRegistry: $(azureContainerRegistry)
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: '0ca027eb-05f4-45e7-8fa6-18ae47b5f430'
+        azureContainerRegistry: '{"loginServer":"registry20190813033530.azurecr.io", "id" : "/subscriptions/4e8499cd-4e5b-4067-9614-57fc34c7dad0/resourceGroups/EshpResourceGroup/providers/Microsoft.ContainerRegistry/registries/registry20190813033530"}'
         dockerComposeFile: '**/docker-compose.yml'
+        action: 'Run a Docker Compose command'
