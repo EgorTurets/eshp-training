@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EshpCommon\EshpCommon.csproj" />
-    <ProjectReference Include="..\EshpProductService\EshpProductService.csproj" />
-    <ProjectReference Include="..\EshpUserManager\EshpUserManager.csproj" />
+    <ProjectReference Include="..\..\Common\EshpCommon\EshpCommon.csproj" />
+    <ProjectReference Include="..\..\Product\EshpProductProvider\EshpProductProvider.csproj" />
+    <ProjectReference Include="..\..\Product\EshpProductService\EshpProductService.csproj" />
   </ItemGroup>
 
 </Project>

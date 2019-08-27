@@ -19,7 +19,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\EshpProductService\EshpProductService.csproj" />
+    <ProjectReference Include="..\..\Product\EshpProductService\EshpProductService.csproj" />
     <ProjectReference Include="..\EshpUserCompanyCommon\EshpUserCompanyCommon.csproj" />
     <ProjectReference Include="..\UserService\UserService.csproj" />
   </ItemGroup>
