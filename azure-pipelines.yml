@@ -29,4 +29,5 @@ stages:
         azureContainerRegistry: '{"loginServer":"registry20190813033530.azurecr.io", "id" : "/subscriptions/4e8499cd-4e5b-4067-9614-57fc34c7dad0/resourceGroups/EshpResourceGroup/providers/Microsoft.ContainerRegistry/registries/registry20190813033530"}'
         dockerComposeFile: '**/docker-compose.yml'
         action: 'Run a Docker Compose command'
+        dockerComposeCommand: build
 
