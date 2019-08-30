@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserCompany", "UserCompany", "{70ED8AA2-D152-49C3-A472-70B82F656780}"
+	ProjectSection(SolutionItems) = preProject
+		src\Dockerfile-usercompany = src\Dockerfile-usercompany
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{F71A617F-555D-4221-B640-41FAC61FF58C}"
+	ProjectSection(SolutionItems) = preProject
+		src\Dockerfile = src\Dockerfile
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{97F54061-EB12-4689-81E6-1A71CCC890AF}"
 EndProject
