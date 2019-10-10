@@ -85,15 +85,22 @@ namespace EshpProductService.Services
 
         public ServiceResult CreateProduct(ProductBase product)
         {
-            var isProductValid = ValidateProductBase(product);
+            bool isProductValid;
+            try
+            {
+                isProductValid = ValidateProductBase(product);
+            }
+            catch (ArgumentException aex)
+            {
+                return ServiceResult.CreateErrorResult(aex.Message);
+            }
 
-            ProductBase result = null;
-            if (isProductValid)
+            if (!isProductValid)
                 return ServiceResult.CreateErrorResult("Model is not valid");
 
             try
             {
-                result = _productProvider.CreateBaseProduct(product);
+                var result = _productProvider.CreateBaseProduct(product);
                 return ServiceResult.CreateSuccessResult(result);
             }
             catch (Exception ex)
@@ -106,12 +113,20 @@ namespace EshpProductService.Services
         {
             if (productId < 1)
             {
-                throw new ArgumentException($"{nameof(productId)} must be more than 0");
+                return ServiceResult.CreateErrorResult($"{nameof(productId)} must be more than 0");
             }
 
-            var isProductValid = ValidateProductBase(product);
+            bool isProductValid;
+            try
+            {
+                isProductValid = ValidateProductBase(product);
+            }
+            catch (ArgumentException aex)
+            {
+                return ServiceResult.CreateErrorResult(aex.Message);
+            }
 
-            if (isProductValid)
+            if (!isProductValid)
                 return ServiceResult.CreateErrorResult("Model is not valid");
 
             try
