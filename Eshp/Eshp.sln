@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserCompany", "UserCompany"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{F71A617F-555D-4221-B640-41FAC61FF58C}"
 	ProjectSection(SolutionItems) = preProject
-		src\Dockerfile = src\Dockerfile
+		src\Dockerfile-product = src\Dockerfile-product
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{97F54061-EB12-4689-81E6-1A71CCC890AF}"
