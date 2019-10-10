@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EshpProductCommon;
+using EshpProductProvider.Interfaces;
+using EshpProductProvider.Providers;
+using EshpProductService.Interfaces;
+using EshpProductService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace EshpProductAPI
 {
@@ -25,6 +24,16 @@ namespace EshpProductAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add services
+            services.AddTransient<IProductService, ProductService>();
+
+            // Add providers
+            services.AddTransient<IProductProvider, ProductProvider>();
+
+            string connectionString = Configuration.GetConnectionString("EshpAzure");
+            services.AddDbContext<EshpProductDbContext>(options =>
+            options.UseSqlServer(connectionString));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

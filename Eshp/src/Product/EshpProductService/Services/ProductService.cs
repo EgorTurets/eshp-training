@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EshpProductCommon;
-using EshpProductProvider;
+using EshpProductProvider.Interfaces;
 using EshpProductService.Interfaces;
 
 namespace EshpProductService.Services

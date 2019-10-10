@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EshpProductCommon;
 
-namespace EshpProductProvider
+namespace EshpProductProvider.Interfaces
 {
     public interface IProductProvider
     {
