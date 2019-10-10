@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using EshpCommon;
 using EshpProductCommon;
 
 namespace EshpProductService.Interfaces
@@ -7,27 +7,27 @@ namespace EshpProductService.Interfaces
     {
         #region Gets
 
-        ProductBase GetProductById(int id);
-        IList<ProductBase> GetProducts(int count, int page);
-        int GetProductsCount();
-        IList<ProductBase> GetProductsByCompany(int companyId);
+        ServiceResult GetProductById(int id);
+        ServiceResult GetProducts(int count, int page);
+        ServiceResult GetProductsCount();
+        ServiceResult GetProductsByCompany(int companyId);
 
         #endregion
 
         #region CommonProductActions
 
-        ProductBase CreateProduct(ProductBase product);
-        bool UpdateProduct(int productId, ProductBase product);
-        bool DeleteProduct(int productId);
+        ServiceResult CreateProduct(ProductBase product);
+        ServiceResult UpdateProduct(int productId, ProductBase product);
+        ServiceResult DeleteProduct(int productId);
 
         #endregion
 
         #region CompanyProductActions
 
-        Product AddProductToCompany(int productId, int companyId);
-        bool UpdateProductForCompany(int companyId, int productId, Product product);
-        bool RemoveProductFromCompany(int productId, int companyId);
-        int GetProductsCountForCompany(int companyId);
+        ServiceResult AddProductToCompany(int productId, int companyId);
+        ServiceResult UpdateProductForCompany(int companyId, int productId, Product product);
+        ServiceResult RemoveProductFromCompany(int productId, int companyId);
+        ServiceResult GetProductsCountForCompany(int companyId);
 
         #endregion
 
