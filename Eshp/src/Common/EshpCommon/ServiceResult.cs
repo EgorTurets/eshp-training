@@ -17,9 +17,9 @@
             Result = result;
         }
 
-        public static ServiceResult CreateErrorResult(bool isErrored, string errorMessage)
+        public static ServiceResult CreateErrorResult(string errorMessage)
         {
-            return new ServiceResult(null, isErrored, errorMessage);
+            return new ServiceResult(null, true, errorMessage);
         }
 
         public static ServiceResult CreateSuccessResult(object result)
