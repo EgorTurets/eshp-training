@@ -6,9 +6,10 @@ namespace EshpProductProvider.Interfaces
     public interface IProductProvider
     {
         ProductBase GetProductBaseById(int id);
-        IList<ProductBase> Get(int count, int page);
-        IList<ProductBase> GetByCompany(int id);
+        IList<ProductBase> GetProductsBase(int count, int page);
+        IList<Product> GetByCompany(int id);
         int GetCount();
+        Product GetById(int id);
 
         #region CommonProductActions
 

@@ -22,16 +22,16 @@ namespace Tests
 
         [TestCase(1)]
         [TestCase(10)]
-        public void ProductService_GetProductById_IdMoreThan0_ProductBase(int id)
+        public void ProductService_GetProductById_IdMoreThan0_Product(int id)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.GetProductBaseById(It.IsAny<int>()))
-                .Returns(new ProductBase());
+            mock.Setup(a => a.GetById(It.IsAny<int>()))
+                .Returns(new Product());
             IProductService service = new ProductService(mock.Object);
 
             var result = service.GetProductById(id);
 
-            Assert.IsInstanceOf(typeof(ProductBase), result.Result);
+            Assert.IsInstanceOf(typeof(Product), result.Result);
         }
 
         [TestCase(0)]
@@ -39,8 +39,8 @@ namespace Tests
         public void ProductService_GetProductById_IdLessThan1_IsErrored(int id)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.GetProductBaseById(It.IsAny<int>()))
-                .Returns(new ProductBase());
+            mock.Setup(a => a.GetById(It.IsAny<int>()))
+                .Returns(new Product());
             IProductService service = new ProductService(mock.Object);
 
             Assert.IsTrue(service.GetProductById(id).IsErrored);
@@ -48,14 +48,14 @@ namespace Tests
 
         [TestCase(1, 1)]
         [TestCase(10, 5)]
-        public void ProductService_GetProducts_ArgsMoreThan0_ProductBaseList(int count, int page)
+        public void ProductService_GetProductsBase_ArgsMoreThan0_ProductList(int count, int page)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.Get(It.IsAny<int>(), It.IsAny<int>()))
+            mock.Setup(a => a.GetProductsBase(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(new List<ProductBase>());
             IProductService service = new ProductService(mock.Object);
 
-            var result = service.GetProducts(count, page);
+            var result = service.GetProductsBase(count, page);
 
             Assert.IsInstanceOf(typeof(IList<ProductBase>), result.Result);
         }
@@ -63,28 +63,28 @@ namespace Tests
         [TestCase(0, 1)]
         [TestCase(1, 0)]
         [TestCase(-10, -5)]
-        public void ProductService_GetProducts_ArgsLessThan1_IsErrored(int count, int page)
+        public void ProductService_GetProductsBase_ArgsLessThan1_IsErrored(int count, int page)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.Get(It.IsAny<int>(), It.IsAny<int>()))
+            mock.Setup(a => a.GetProductsBase(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(new List<ProductBase>());
             IProductService service = new ProductService(mock.Object);
 
-            Assert.IsTrue(service.GetProducts(count, page).IsErrored);
+            Assert.IsTrue(service.GetProductsBase(count, page).IsErrored);
         }
 
         [TestCase(1)]
         [TestCase(10)]
-        public void ProductService_GetProductsByCompany_CompanyIdMoreThan0_ProductBaseList(int companyId)
+        public void ProductService_GetProductsByCompany_CompanyIdMoreThan0_ProductList(int companyId)
         {
             var mock = new Mock<IProductProvider>();
             mock.Setup(a => a.GetByCompany(It.IsAny<int>()))
-                .Returns(new List<ProductBase>());
+                .Returns(new List<Product>());
             IProductService service = new ProductService(mock.Object);
 
             var result = service.GetProductsByCompany(companyId);
 
-            Assert.IsInstanceOf(typeof(IList<ProductBase>), result.Result);
+            Assert.IsInstanceOf(typeof(IList<Product>), result.Result);
         }
 
         [TestCase(0)]
@@ -93,7 +93,7 @@ namespace Tests
         {
             var mock = new Mock<IProductProvider>();
             mock.Setup(a => a.GetByCompany(It.IsAny<int>()))
-                .Returns(new List<ProductBase>());
+                .Returns(new List<Product>());
             IProductService service = new ProductService(mock.Object);
 
             Assert.IsTrue(service.GetProductsByCompany(companyId).IsErrored);

@@ -8,7 +8,7 @@ namespace EshpProductService.Interfaces
         #region Gets
 
         ServiceResult GetProductById(int id);
-        ServiceResult GetProducts(int count, int page);
+        ServiceResult GetProductsBase(int count, int page);
         ServiceResult GetProductsCount();
         ServiceResult GetProductsByCompany(int companyId);
 

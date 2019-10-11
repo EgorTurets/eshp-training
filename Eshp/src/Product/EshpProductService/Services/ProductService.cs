@@ -27,7 +27,7 @@ namespace EshpProductService.Services
 
             try
             {
-                var result = _productProvider.GetProductBaseById(id);
+                var result = _productProvider.GetById(id);
                 return ServiceResult.CreateSuccessResult(result);
             }
             catch (Exception ex)
@@ -36,7 +36,7 @@ namespace EshpProductService.Services
             }
         }
 
-        public ServiceResult GetProducts(int count, int page)
+        public ServiceResult GetProductsBase(int count, int page)
         {
             if (count < 1 || page < 1)
             {
@@ -45,7 +45,7 @@ namespace EshpProductService.Services
 
             try
             {
-                var result = _productProvider.Get(count, page);
+                var result = _productProvider.GetProductsBase(count, page);
                 return ServiceResult.CreateSuccessResult(result);
             }
             catch (Exception ex)

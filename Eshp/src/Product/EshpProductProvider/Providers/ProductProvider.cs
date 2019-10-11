@@ -33,12 +33,12 @@ namespace EshpProductProvider.Providers
             throw new NotImplementedException();
         }
 
-        public IList<ProductBase> Get(int count, int page)
+        public IList<ProductBase> GetProductsBase(int count, int page)
         {
             throw new NotImplementedException();
         }
 
-        public IList<ProductBase> GetByCompany(int id)
+        public IList<Product> GetByCompany(int id)
         {
             throw new NotImplementedException();
         }
@@ -72,6 +72,12 @@ namespace EshpProductProvider.Providers
         public bool UpdateForCompany(int companyId, int productId, Product product)
         {
             throw new NotImplementedException();
+        }
+
+        public Product GetById(int id)
+        {
+            var product = db.Products.Find(id);
+            return product;
         }
     }
 }
