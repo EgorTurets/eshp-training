@@ -2,6 +2,7 @@
 using EshpProductProvider.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EshpProductProvider.Providers
 {
@@ -21,7 +22,7 @@ namespace EshpProductProvider.Providers
 
         public ProductBase CreateBaseProduct(ProductBase product)
         {
-            var entityEntry = db.Add(product);
+            var entityEntry = db.Products.Add((Product)product);
             db.SaveChanges(true);
 
             return entityEntry.Entity;
@@ -42,14 +43,15 @@ namespace EshpProductProvider.Providers
             throw new NotImplementedException();
         }
 
-        public ProductBase GetById(int id)
+        public ProductBase GetProductBaseById(int id)
         {
-            throw new NotImplementedException();
+            var product = db.Products.Find(id);
+            return product;
         }
 
         public int GetCount()
         {
-            throw new NotImplementedException();
+            return db.Products.Count();
         }
 
         public int GetCountForCompany(int companyId)
