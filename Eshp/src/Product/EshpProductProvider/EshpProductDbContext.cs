@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EshpProductCommon;
+using Microsoft.EntityFrameworkCore;
 
-namespace EshpProductCommon
+namespace EshpProductProvider
 {
     public class EshpProductDbContext : DbContext
     {

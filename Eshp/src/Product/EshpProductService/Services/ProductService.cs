@@ -27,7 +27,7 @@ namespace EshpProductService.Services
 
             try
             {
-                var result = _productProvider.GetById(id);
+                var result = _productProvider.GetProductBaseById(id);
                 return ServiceResult.CreateSuccessResult(result);
             }
             catch (Exception ex)

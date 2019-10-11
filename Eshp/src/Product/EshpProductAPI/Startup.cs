@@ -1,4 +1,4 @@
-﻿using EshpProductCommon;
+﻿using EshpProductProvider;
 using EshpProductProvider.Interfaces;
 using EshpProductProvider.Providers;
 using EshpProductService.Interfaces;

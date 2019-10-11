@@ -11,7 +11,7 @@ namespace EshpProductCommon
 
     public class Product : ProductBase
     {
-        public int BaseProductId { get; set; }
+        public int? BaseProductId { get; set; }
         public int? Price { get; set; }
         public int? Amount { get; set; }
         public string Description { get; set; }

@@ -25,7 +25,7 @@ namespace Tests
         public void ProductService_GetProductById_IdMoreThan0_ProductBase(int id)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.GetById(It.IsAny<int>()))
+            mock.Setup(a => a.GetProductBaseById(It.IsAny<int>()))
                 .Returns(new ProductBase());
             IProductService service = new ProductService(mock.Object);
 
@@ -39,7 +39,7 @@ namespace Tests
         public void ProductService_GetProductById_IdLessThan1_IsErrored(int id)
         {
             var mock = new Mock<IProductProvider>();
-            mock.Setup(a => a.GetById(It.IsAny<int>()))
+            mock.Setup(a => a.GetProductBaseById(It.IsAny<int>()))
                 .Returns(new ProductBase());
             IProductService service = new ProductService(mock.Object);
 
