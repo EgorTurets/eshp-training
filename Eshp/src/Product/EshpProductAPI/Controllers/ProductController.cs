@@ -31,15 +31,26 @@ namespace EshpProductAPI.Controllers
             return new JsonResult(result);
         }
 
-        public ActionResult<List<ProductBase>> GetProductList()
+        [HttpGet("base/list/{page}/{count}")]
+        public ActionResult<List<ProductBase>> GetProductList(int count, int page)
         {
-            return null;
+            var result = _productService.GetProductsBase(count, page);
+
+            return new JsonResult(result);
         }
 
-        [HttpPost]
+        [HttpPost("base/create")]
         public ActionResult<ProductBase> CreateProduct([FromBody] ProductBase product)
         {
             var result = _productService.CreateProduct(product);
+
+            return new JsonResult(result);
+        }
+
+        [HttpPost("base/update/{id}")]
+        public ActionResult<ProductBase> UpdateProduct(int id, [FromBody] ProductBase product)
+        {
+            var result = _productService.UpdateProduct(id, product);
 
             return new JsonResult(result);
         }
