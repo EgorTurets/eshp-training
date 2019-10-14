@@ -8,7 +8,6 @@
 
         public object Result { get; set; }
 
-        public ServiceResult() { }
 
         private ServiceResult (object result, bool isErrored, string errorMessage)
         {

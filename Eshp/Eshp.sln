@@ -1,23 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserCompany", "UserCompany", "{70ED8AA2-D152-49C3-A472-70B82F656780}"
-	ProjectSection(SolutionItems) = preProject
-		src\Dockerfile-usercompany = src\Dockerfile-usercompany
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{F71A617F-555D-4221-B640-41FAC61FF58C}"
-	ProjectSection(SolutionItems) = preProject
-		src\Dockerfile-product = src\Dockerfile-product
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{97F54061-EB12-4689-81E6-1A71CCC890AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{4868C7D8-393F-4BAD-B43A-89D028E2EEAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{2F981C09-2AC7-4105-9D8D-9E1B42FBA558}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{2F981C09-2AC7-4105-9D8D-9E1B42FBA558}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Test", "_Test", "{C905119E-7FD0-4565-B664-6DE37EDBDAC0}"
 EndProject
@@ -35,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpProductProvider", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpUserManager", "src\UserCompany\EshpUserManager\EshpUserManager.csproj", "{A4810A49-F4B5-4FD6-BE16-E777C5A7FD86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpUserCompanyCommon", "src\UserCompany\EshpUserCompanyCommon\EshpUserCompanyCommon.csproj", "{442F0F50-EA4E-4BC4-93F8-A0752B768830}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "src\UserCompany\UserService\UserService.csproj", "{72D5D40D-0990-48B0-B374-757C6CCEDDB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpCommon", "src\Common\EshpCommon\EshpCommon.csproj", "{43F99A59-2200-4C83-876D-D514DE5EF4C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpTests", "src\Tests\EshpTests\EshpTests.csproj", "{FBFD6F55-4BF1-463A-A48D-5C2C4D55EE2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpUserCompanyProvider", "..\EshpUserCompanyProvider\EshpUserCompanyProvider.csproj", "{1B7180A4-E95F-4DC3-B22A-3EE0C2850333}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +67,6 @@ Global
 		{A4810A49-F4B5-4FD6-BE16-E777C5A7FD86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4810A49-F4B5-4FD6-BE16-E777C5A7FD86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4810A49-F4B5-4FD6-BE16-E777C5A7FD86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{442F0F50-EA4E-4BC4-93F8-A0752B768830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{442F0F50-EA4E-4BC4-93F8-A0752B768830}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{442F0F50-EA4E-4BC4-93F8-A0752B768830}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{442F0F50-EA4E-4BC4-93F8-A0752B768830}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72D5D40D-0990-48B0-B374-757C6CCEDDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72D5D40D-0990-48B0-B374-757C6CCEDDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D5D40D-0990-48B0-B374-757C6CCEDDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,6 +79,10 @@ Global
 		{FBFD6F55-4BF1-463A-A48D-5C2C4D55EE2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBFD6F55-4BF1-463A-A48D-5C2C4D55EE2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBFD6F55-4BF1-463A-A48D-5C2C4D55EE2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7180A4-E95F-4DC3-B22A-3EE0C2850333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7180A4-E95F-4DC3-B22A-3EE0C2850333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7180A4-E95F-4DC3-B22A-3EE0C2850333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7180A4-E95F-4DC3-B22A-3EE0C2850333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,10 +96,10 @@ Global
 		{6E5BE2B3-C2BC-4D73-BD77-71696C06297F} = {F71A617F-555D-4221-B640-41FAC61FF58C}
 		{54B38796-4334-4760-80D8-796CB6E9AFB9} = {F71A617F-555D-4221-B640-41FAC61FF58C}
 		{A4810A49-F4B5-4FD6-BE16-E777C5A7FD86} = {97F54061-EB12-4689-81E6-1A71CCC890AF}
-		{442F0F50-EA4E-4BC4-93F8-A0752B768830} = {70ED8AA2-D152-49C3-A472-70B82F656780}
 		{72D5D40D-0990-48B0-B374-757C6CCEDDB6} = {4868C7D8-393F-4BAD-B43A-89D028E2EEAC}
 		{43F99A59-2200-4C83-876D-D514DE5EF4C0} = {8C060C59-8058-4D28-9911-580CB4CD700A}
 		{FBFD6F55-4BF1-463A-A48D-5C2C4D55EE2F} = {C905119E-7FD0-4565-B664-6DE37EDBDAC0}
+		{1B7180A4-E95F-4DC3-B22A-3EE0C2850333} = {2F981C09-2AC7-4105-9D8D-9E1B42FBA558}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88E23E5E-591F-4BED-A0FF-AD43CD3538AD}
