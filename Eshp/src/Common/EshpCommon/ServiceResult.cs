@@ -1,29 +1,29 @@
 ﻿namespace EshpCommon
 {
-    public class ServiceResult
+    public class ServiceResult<T> where T: class
     {
         public bool IsErrored { get; set; }
 
         public string ErrorMessage { get; set; }
 
-        public object Result { get; set; }
+        public T Result { get; set; }
 
 
-        private ServiceResult (object result, bool isErrored, string errorMessage)
+        private ServiceResult (T result, bool isErrored, string errorMessage)
         {
             IsErrored = isErrored;
             ErrorMessage = errorMessage;
             Result = result;
         }
 
-        public static ServiceResult CreateErrorResult(string errorMessage)
+        public static ServiceResult<T> CreateErrorResult(string errorMessage)
         {
-            return new ServiceResult(null, true, errorMessage);
+            return new ServiceResult<T>(null, true, errorMessage);
         }
 
-        public static ServiceResult CreateSuccessResult(object result)
+        public static ServiceResult<T> CreateSuccessResult(T result)
         {
-            return new ServiceResult(result, false, null);
+            return new ServiceResult<T>(result, false, null);
         }
     }
 }
