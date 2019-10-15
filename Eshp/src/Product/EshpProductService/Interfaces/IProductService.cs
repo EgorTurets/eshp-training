@@ -1,5 +1,7 @@
 ﻿using EshpCommon;
 using EshpProductCommon;
+using System;
+using System.Collections.Generic;
 
 namespace EshpProductService.Interfaces
 {
@@ -7,27 +9,27 @@ namespace EshpProductService.Interfaces
     {
         #region Gets
 
-        ServiceResult GetProductById(int id);
-        ServiceResult GetProductsBase(int count, int page);
-        ServiceResult GetProductsCount();
-        ServiceResult GetProductsByCompany(int companyId);
+        ServiceResult<Product> GetProductById(int id);
+        ServiceResult<IList<ProductBase>> GetProductsBase(int count, int page);
+        ServiceResult<int> GetProductsCount();
+        ServiceResult<IList<Product>> GetProductsByCompany(int companyId);
 
         #endregion
 
         #region CommonProductActions
 
-        ServiceResult CreateProduct(ProductBase product);
-        ServiceResult UpdateProduct(int productId, ProductBase product);
-        ServiceResult DeleteProduct(int productId);
+        ServiceResult<ProductBase> CreateProduct(ProductBase product);
+        ServiceResult<bool> UpdateProduct(int productId, ProductBase product);
+        ServiceResult<bool> DeleteProduct(int productId);
 
         #endregion
 
         #region CompanyProductActions
 
-        ServiceResult AddProductToCompany(int productId, int companyId);
-        ServiceResult UpdateProductForCompany(int companyId, int productId, Product product);
-        ServiceResult RemoveProductFromCompany(int productId, int companyId);
-        ServiceResult GetProductsCountForCompany(int companyId);
+        ServiceResult<bool> AddProductToCompany(int productId, int companyId);
+        ServiceResult<bool> UpdateProductForCompany(int companyId, int productId, Product product);
+        ServiceResult<bool> RemoveProductFromCompany(int productId, int companyId);
+        ServiceResult<IList<Product>> GetProductsCountForCompany(int companyId);
 
         #endregion
 

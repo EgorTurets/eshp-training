@@ -3,6 +3,7 @@ using EshpProductCommon;
 using EshpProductProvider.Interfaces;
 using EshpProductService.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EshpProductService.Services
@@ -18,64 +19,64 @@ namespace EshpProductService.Services
 
         #region Gets
 
-        public ServiceResult GetProductById(int id)
+        public ServiceResult<Product> GetProductById(int id)
         {
             if (id < 1)
             {
-                return ServiceResult.CreateErrorResult($"{nameof(id)} must be more than 0");
+                return ServiceResult<Product>.CreateErrorResult($"{nameof(id)} must be more than 0");
             }
 
             try
             {
                 var result = _productProvider.GetById(id);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<Product>.CreateSuccessResult(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<Product>.CreateErrorResult(ex.Message);
             }
         }
 
-        public ServiceResult GetProductsBase(int count, int page)
+        public ServiceResult<IList<ProductBase>> GetProductsBase(int count, int page)
         {
             if (count < 1 || page < 1)
             {
-                return ServiceResult.CreateErrorResult($"{nameof(count)} and {nameof(page)} must be more than 0");
+                return ServiceResult<IList<ProductBase>>.CreateErrorResult($"{nameof(count)} and {nameof(page)} must be more than 0");
             }
 
             try
             {
                 var result = _productProvider.GetProductsBase(count, page);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<IList<ProductBase>>.CreateSuccessResult(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<IList<ProductBase>>.CreateErrorResult(ex.Message);
             }
         }
 
-        public ServiceResult GetProductsCount()
+        public ServiceResult<int> GetProductsCount()
         {
             var result = _productProvider.GetCount();
-            return ServiceResult.CreateSuccessResult(result);
+            return ServiceResult<int>.CreateSuccessResult(result);
         }
 
-        public ServiceResult GetProductsByCompany(int companyId)
+        public ServiceResult<IList<Product>> GetProductsByCompany(int companyId)
         {
             if (companyId < 1)
             {
-                return ServiceResult.CreateErrorResult($"{nameof(companyId)} must be more than 0");
+                return ServiceResult<IList<Product>>.CreateErrorResult($"{nameof(companyId)} must be more than 0");
             }
 
             try
             {
                 var result = _productProvider.GetByCompany(companyId);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<IList<Product>>.CreateSuccessResult(result);
 
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<IList<Product>>.CreateErrorResult(ex.Message);
             }
         }
 
@@ -83,7 +84,7 @@ namespace EshpProductService.Services
         
         #region CommonProductActions
 
-        public ServiceResult CreateProduct(ProductBase product)
+        public ServiceResult<ProductBase> CreateProduct(ProductBase product)
         {
             bool isProductValid;
             try
@@ -92,28 +93,28 @@ namespace EshpProductService.Services
             }
             catch (ArgumentException aex)
             {
-                return ServiceResult.CreateErrorResult(aex.Message);
+                return ServiceResult<ProductBase>.CreateErrorResult(aex.Message);
             }
 
             if (!isProductValid)
-                return ServiceResult.CreateErrorResult("Model is not valid");
+                return ServiceResult<ProductBase>.CreateErrorResult("Model is not valid");
 
             try
             {
                 var result = _productProvider.CreateBaseProduct(product);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<ProductBase>.CreateSuccessResult(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<ProductBase>.CreateErrorResult(ex.Message);
             }
         }
 
-        public ServiceResult UpdateProduct(int productId, ProductBase product)
+        public ServiceResult<bool> UpdateProduct(int productId, ProductBase product)
         {
             if (productId < 1)
             {
-                return ServiceResult.CreateErrorResult($"{nameof(productId)} must be more than 0");
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(productId)} must be more than 0");
             }
 
             bool isProductValid;
@@ -123,38 +124,38 @@ namespace EshpProductService.Services
             }
             catch (ArgumentException aex)
             {
-                return ServiceResult.CreateErrorResult(aex.Message);
+                return ServiceResult<bool>.CreateErrorResult(aex.Message);
             }
 
             if (!isProductValid)
-                return ServiceResult.CreateErrorResult("Model is not valid");
+                return ServiceResult<bool>.CreateErrorResult("Model is not valid");
 
             try
             {
                 var result = _productProvider.UpdateBaseProduct(productId, product);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<bool>.CreateSuccessResult(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<bool>.CreateErrorResult(ex.Message);
             }
         }
 
-        public ServiceResult DeleteProduct(int productId)
+        public ServiceResult<bool> DeleteProduct(int productId)
         {
             if (productId < 1)
             {
-                return ServiceResult.CreateErrorResult($"{nameof(productId)} must be more than 0");
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(productId)} must be more than 0");
             }
 
             try
             {
                 var result = _productProvider.DeleteBaseProduct(productId);
-                return ServiceResult.CreateSuccessResult(result);
+                return ServiceResult<bool>.CreateSuccessResult(result);
             }
             catch (Exception ex)
             {
-                return ServiceResult.CreateErrorResult(ex.Message);
+                return ServiceResult<bool>.CreateErrorResult(ex.Message);
             }
         }
 
@@ -162,22 +163,22 @@ namespace EshpProductService.Services
 
         #region CompanyProductActions
 
-        public ServiceResult AddProductToCompany(int productId, int companyId)
+        public ServiceResult<bool> AddProductToCompany(int productId, int companyId)
         {
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult UpdateProductForCompany(int companyId, int productId, Product product)
+        public ServiceResult<bool> UpdateProductForCompany(int companyId, int productId, Product product)
         {
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult RemoveProductFromCompany(int productId, int companyId)
+        public ServiceResult<bool> RemoveProductFromCompany(int productId, int companyId)
         {
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult GetProductsCountForCompany(int companyId)
+        public ServiceResult<IList<Product>> GetProductsCountForCompany(int companyId)
         {
             throw new System.NotImplementedException();
         }

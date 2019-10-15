@@ -1,6 +1,8 @@
-﻿namespace EshpCommon
+﻿using EshpCommon.Helpers;
+
+namespace EshpCommon
 {
-    public class ServiceResult<T> where T: class
+    public class ServiceResult<T>
     {
         public bool IsErrored { get; set; }
 
@@ -18,7 +20,7 @@
 
         public static ServiceResult<T> CreateErrorResult(string errorMessage)
         {
-            return new ServiceResult<T>(null, true, errorMessage);
+            return new ServiceResult<T>((T)DefaultValues.GetDefault(typeof(T)), true, errorMessage);
         }
 
         public static ServiceResult<T> CreateSuccessResult(T result)
