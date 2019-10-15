@@ -1,11 +1,13 @@
 ﻿using EshpCommon;
+using EshpUserCompanyCommon.Models;
+using System.Collections.Generic;
 
 namespace UserService.Interfaces
 {
     public interface ICompanyService
     {
-        ServiceResult GetById(int id);
+        ServiceResult<Company> GetById(int id);
 
-        ServiceResult GetCompanies(int count, int page);
+        ServiceResult<List<Company>> GetCompanies(int count, int page);
     }
 }
