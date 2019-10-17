@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using EshpCommon;
 using EshpUserCompanyCommon.Models;
@@ -30,7 +31,7 @@ namespace UserCompanyService.Services
         public ServiceResult<IList<Company>> GetCompanies(PageRequest pageInfo)
         {
             string errorMessage;
-            var isValid = IsPageRequestValid(pageInfo, out errorMessage);
+            var isValid = ValidatePageRequest(pageInfo, out errorMessage);
 
             if (!isValid)
             {
@@ -69,7 +70,7 @@ namespace UserCompanyService.Services
             throw new System.NotImplementedException();
         }
 
-        private bool IsPageRequestValid(PageRequest pageInfo, out string message)
+        private bool ValidatePageRequest(PageRequest pageInfo, out string message)
         {
             var messageBuilder = new StringBuilder();
 
@@ -83,7 +84,7 @@ namespace UserCompanyService.Services
             }
 
             message = messageBuilder.ToString();
-            return message.Length == 0;
+            return String.IsNullOrWhiteSpace(message);
         }
     }
 }

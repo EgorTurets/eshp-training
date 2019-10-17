@@ -127,7 +127,7 @@ namespace EshpTests
 
         [TestCase(1)]
         [TestCase(5)]
-        public void CompanyService_GetByProductId_IdMoreThan0_Success(int baseProductId)
+        public void CompanyService_GetByProductId_IdMoreThan_Success(int baseProductId)
         {
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompaniesByProduct(It.IsAny<int>()))
@@ -138,6 +138,11 @@ namespace EshpTests
 
             Assert.IsInstanceOf<ServiceResult<IList<Company>>>(result);
             Assert.IsFalse(result.IsErrored);
+        }
+
+        public void CompanyService_CreateCompany_NameIsEmpty_Fail()
+        {
+
         }
     }
 }

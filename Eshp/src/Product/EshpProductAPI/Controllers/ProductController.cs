@@ -23,14 +23,6 @@ namespace EshpProductAPI.Controllers
             return new JsonResult(result);
         }
 
-        [HttpGet("base/{id}")]
-        public ActionResult<ProductBase> GetProduct(int id)
-        {
-            var result = _productService.GetProductById(id);
-
-            return new JsonResult(result);
-        }
-
         [HttpGet("base/list/{page}/{count}")]
         public ActionResult<List<ProductBase>> GetProductList(int count, int page)
         {
@@ -51,6 +43,14 @@ namespace EshpProductAPI.Controllers
         public ActionResult<ProductBase> UpdateProduct(int id, [FromBody] ProductBase product)
         {
             var result = _productService.UpdateProduct(id, product);
+
+            return new JsonResult(result);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Product> GetProduct(int id)
+        {
+            var result = _productService.GetProductById(id);
 
             return new JsonResult(result);
         }
