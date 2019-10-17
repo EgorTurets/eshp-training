@@ -8,9 +8,9 @@ namespace UserCompanyService.Interfaces
     {
         ServiceResult<Company> GetById(int id);
 
-        ServiceResult<List<Company>> GetCompanies(PageRequest pageInfo);
+        ServiceResult<IList<Company>> GetCompanies(PageRequest pageInfo);
 
-        ServiceResult<List<Company>> GetByProductId(int baseProductId);
+        ServiceResult<IList<Company>> GetByProductId(int baseProductId);
 
         ServiceResult<Company> CreateCompany(Company company);
 

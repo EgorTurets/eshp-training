@@ -3,6 +3,7 @@ using EshpUserCompanyCommon.Models;
 using EshpUserCompanyProvider;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 using UserCompanyService.Interfaces;
 using UserCompanyService.Services;
 
@@ -27,13 +28,12 @@ namespace EshpTests
             var result = service.GetById(id);
 
             Assert.IsInstanceOf(typeof(ServiceResult<Company>), result);
-            Assert.IsInstanceOf(typeof(Company), result.Result);
             Assert.IsFalse(result.IsErrored);
         }
 
         [TestCase(0)]
         [TestCase(-5)]
-        public void CompanyService_GetById_IdLessThan1_Success(int id)
+        public void CompanyService_GetById_IdLessThan1_Fail(int id)
         {
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompanyById(It.IsAny<int>()))
@@ -43,8 +43,71 @@ namespace EshpTests
             var result = service.GetById(id);
 
             Assert.IsInstanceOf(typeof(ServiceResult<Company>), result);
-            Assert.IsInstanceOf(typeof(Company), result.Result);
             Assert.IsTrue(result.IsErrored);
+        }
+
+        [TestCase(0)]
+        [TestCase(-5)]
+        public void CompanyService_GetCompanies_PageLessThan1_Fail(int pageNumber)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+            var pageInfo = new PageRequest(pageNumber, 10);
+
+            var result = service.GetCompanies(pageInfo);
+
+            Assert.IsInstanceOf(typeof(ServiceResult<IList<Company>>), result);
+            Assert.IsTrue(result.IsErrored);
+        }
+
+        [TestCase(0)]
+        [TestCase(-5)]
+        public void CompanyService_GetCompanies_CountLessThan1_Fail(int count)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+            var pageInfo = new PageRequest(1, count);
+
+            var result = service.GetCompanies(pageInfo);
+
+            Assert.IsInstanceOf(typeof(ServiceResult<IList<Company>>), result);
+            Assert.IsTrue(result.IsErrored);
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+        public void CompanyService_GetCompanies_PageMoreThan0_Success(int pageNumber)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+            var pageInfo = new PageRequest(pageNumber, 10);
+
+            var result = service.GetCompanies(pageInfo);
+
+            Assert.IsInstanceOf(typeof(ServiceResult<IList<Company>>), result);
+            Assert.IsFalse(result.IsErrored);
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+        public void CompanyService_GetCompanies_CountMoreThan0_Success(int count)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+            var pageInfo = new PageRequest(1, count);
+
+            var result = service.GetCompanies(pageInfo);
+
+            Assert.IsInstanceOf(typeof(ServiceResult<IList<Company>>), result);
+            Assert.IsFalse(result.IsErrored);
         }
     }
 }
