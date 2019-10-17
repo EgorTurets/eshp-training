@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -17,6 +17,8 @@
     <ProjectReference Include="..\..\Common\EshpCommon\EshpCommon.csproj" />
     <ProjectReference Include="..\..\Product\EshpProductProvider\EshpProductProvider.csproj" />
     <ProjectReference Include="..\..\Product\EshpProductService\EshpProductService.csproj" />
+    <ProjectReference Include="..\..\UserCompany\EshpUserCompanyProvider\EshpUserCompanyProvider.csproj" />
+    <ProjectReference Include="..\..\UserCompany\UserService\UserCompanyService.csproj" />
   </ItemGroup>
 
 </Project>

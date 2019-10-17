@@ -4,11 +4,10 @@ using EshpProductService.Interfaces;
 using EshpProductService.Services;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tests
+namespace EshpTests
 {
     [TestFixture]
     public class ProductTest
