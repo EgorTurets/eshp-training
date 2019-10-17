@@ -109,5 +109,35 @@ namespace EshpTests
             Assert.IsInstanceOf(typeof(ServiceResult<IList<Company>>), result);
             Assert.IsFalse(result.IsErrored);
         }
+
+        [TestCase(0)]
+        [TestCase(-5)]
+        public void CompanyService_GetByProductId_IdLessThan1_Fail(int baseProductId)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompaniesByProduct(It.IsAny<int>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+
+            var result = service.GetByProductId(baseProductId);
+
+            Assert.IsInstanceOf<ServiceResult<IList<Company>>>(result);
+            Assert.IsTrue(result.IsErrored);
+        }
+
+        [TestCase(1)]
+        [TestCase(5)]
+        public void CompanyService_GetByProductId_IdMoreThan0_Success(int baseProductId)
+        {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompaniesByProduct(It.IsAny<int>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
+
+            var result = service.GetByProductId(baseProductId);
+
+            Assert.IsInstanceOf<ServiceResult<IList<Company>>>(result);
+            Assert.IsFalse(result.IsErrored);
+        }
     }
 }

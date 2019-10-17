@@ -42,22 +42,29 @@ namespace UserCompanyService.Services
             return ServiceResult<IList<Company>>.CreateSuccessResult(result);
         }
 
+        public ServiceResult<IList<Company>> GetByProductId(int baseProductId)
+        {
+            if (baseProductId <= 0)
+            {
+                return ServiceResult<IList<Company>>.CreateErrorResult("BaseProductId must be more than 0");
+            }
+
+            var result = _companyProvider.GetCompaniesByProduct(baseProductId);
+
+            return ServiceResult<IList<Company>>.CreateSuccessResult(result);
+        }
+
         public ServiceResult<Company> CreateCompany(Company company)
         {
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult<bool> DeleteCompany(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ServiceResult<IList<Company>> GetByProductId(int baseProductId)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public ServiceResult<bool> UpdateCompany(int id, Company company)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ServiceResult<bool> DeleteCompany(int id)
         {
             throw new System.NotImplementedException();
         }
