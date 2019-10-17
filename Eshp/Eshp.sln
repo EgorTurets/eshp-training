@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpProductCommon", "src\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpProductProvider", "src\Product\EshpProductProvider\EshpProductProvider.csproj", "{54B38796-4334-4760-80D8-796CB6E9AFB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "src\UserCompany\UserService\UserService.csproj", "{72D5D40D-0990-48B0-B374-757C6CCEDDB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCompanyService", "src\UserCompany\UserService\UserCompanyService.csproj", "{72D5D40D-0990-48B0-B374-757C6CCEDDB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EshpCommon", "src\Common\EshpCommon\EshpCommon.csproj", "{43F99A59-2200-4C83-876D-D514DE5EF4C0}"
 EndProject

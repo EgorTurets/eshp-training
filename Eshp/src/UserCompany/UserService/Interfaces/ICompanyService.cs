@@ -2,12 +2,20 @@
 using EshpUserCompanyCommon.Models;
 using System.Collections.Generic;
 
-namespace UserService.Interfaces
+namespace UserCompanyService.Interfaces
 {
     public interface ICompanyService
     {
         ServiceResult<Company> GetById(int id);
 
-        ServiceResult<List<Company>> GetCompanies(int count, int page);
+        ServiceResult<List<Company>> GetCompanies(PageRequest pageInfo);
+
+        ServiceResult<List<Company>> GetByProductId(int baseProductId);
+
+        ServiceResult<Company> CreateCompany(Company company);
+
+        ServiceResult<bool> UpdateCompany(int id, Company company);
+
+        ServiceResult<bool> DeleteCompany(int id);
     }
 }
