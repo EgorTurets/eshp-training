@@ -1,12 +1,19 @@
 ﻿using System.Collections.Generic;
 using EshpCommon;
 using EshpUserCompanyCommon.Models;
+using EshpUserCompanyProvider;
 using UserCompanyService.Interfaces;
 
 namespace UserCompanyService.Services
 {
     public class CompanyService : ICompanyService
     {
+        private ICompanyProvider _companyProvider;
+        public CompanyService (ICompanyProvider companyProvider)
+        {
+            _companyProvider = companyProvider;
+        }
+
         public ServiceResult<Company> CreateCompany(Company company)
         {
             throw new System.NotImplementedException();
