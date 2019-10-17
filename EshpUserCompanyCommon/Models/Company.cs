@@ -1,4 +1,5 @@
 ﻿using EshpCommon;
+using System.Collections.Generic;
 
 namespace EshpUserCompanyCommon.Models
 {
@@ -6,6 +7,6 @@ namespace EshpUserCompanyCommon.Models
     {
         public string Address { get; set; }
 
-        public User Contact { get; set; }
+        public IList<User> Contacts { get; set; }
     }
 }
