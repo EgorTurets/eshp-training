@@ -15,8 +15,16 @@ namespace EshpProductAPI.Controllers
             _productService = productService;
         }
 
+        [HttpGet("base{id}")]
+        public ActionResult<ProductBase> GetProductBase(int id)
+        {
+            var result = _productService.GetProductById(id);
+
+            return new JsonResult(result);
+        }
+
         [HttpGet("base/{count}/{page}")]
-        public ActionResult<IEnumerable<ProductBase>> GetProducts(int count, int page)
+        public ActionResult<IEnumerable<ProductBase>> GetProductsBase(int count, int page)
         {
             var result = _productService.GetProductsBase(count, page);
 
