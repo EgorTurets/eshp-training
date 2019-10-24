@@ -1,15 +1,13 @@
-﻿using EshpProductCommon;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EshpProductProvider.Interfaces;
 
 namespace EshpProductService.Helpers
 {
     public class ProductHelper
     {
-        public static bool CheckForProductBase (Product product)
+        public static bool CheckForProductBase (int productId, IProductProvider productProvider)
         {
-            return product.BaseProductId == null;
+            var entity = productProvider.GetById(productId);
+            return entity.BaseProductId == null;
         }
     }
 }

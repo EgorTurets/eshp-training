@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\EshpUserCompanyCommon\EshpUserCompanyCommon.csproj" />
     <ProjectReference Include="..\..\Common\EshpCommon\EshpCommon.csproj" />
+    <ProjectReference Include="..\..\Product\EshpProductCommon\EshpProductCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>

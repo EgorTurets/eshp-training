@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EshpUserCompanyProvider
+namespace EshpUserCompanyProvider.HttpClient
 {
     public class ProductHttpClient
     {
-        public HttpClient Client { get; set; }
+        public System.Net.Http.HttpClient Client { get; set; }
 
-        public ProductHttpClient(HttpClient client)
+        public ProductHttpClient(System.Net.Http.HttpClient client)
         {
             client.BaseAddress = new Uri("https://product.eshp.com/api/");
 
@@ -19,7 +19,7 @@ namespace EshpUserCompanyProvider
 
         public async Task<Product> GetProduct(int productId)
         {
-            var response = await Client.GetAsync($"/product/{productId}");
+            var response = await Client.GetAsync(Endpoints.GetProduct(productId));
             response.EnsureSuccessStatusCode();
 
             var result = await response.Content.ReadAsAsync<Product>();
