@@ -3,6 +3,7 @@ using EshpUserCompanyCommon.Models;
 using EshpUserCompanyProvider;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UserCompanyService.Interfaces;
 using UserCompanyService.Services;
@@ -21,11 +22,11 @@ namespace EshpTests
         public void CompanyService_GetById_IdMoreThan0_Success(int id)
         {
             var mock = new Mock<ICompanyProvider>();
-            mock.Setup(a => a.GetCompanyById(It.IsAny<int>()))
+            mock.Setup(a => a.GetCompany(It.IsAny<int>()))
                 .Returns(new Company());
             ICompanyService service = new CompanyService(mock.Object);
 
-            var result = service.GetById(id);
+            var result = service.Get(id);
 
             Assert.IsInstanceOf(typeof(ServiceResult<Company>), result);
             Assert.IsFalse(result.IsErrored);
@@ -36,11 +37,11 @@ namespace EshpTests
         public void CompanyService_GetById_IdLessThan1_Fail(int id)
         {
             var mock = new Mock<ICompanyProvider>();
-            mock.Setup(a => a.GetCompanyById(It.IsAny<int>()))
+            mock.Setup(a => a.GetCompany(It.IsAny<int>()))
                 .Returns(new Company());
             ICompanyService service = new CompanyService(mock.Object);
 
-            var result = service.GetById(id);
+            var result = service.Get(id);
 
             Assert.IsInstanceOf(typeof(ServiceResult<Company>), result);
             Assert.IsTrue(result.IsErrored);
@@ -115,11 +116,11 @@ namespace EshpTests
         public void CompanyService_GetByProductId_IdLessThan1_Fail(int baseProductId)
         {
             var mock = new Mock<ICompanyProvider>();
-            mock.Setup(a => a.GetCompaniesByProduct(It.IsAny<int>()))
+            mock.Setup(a => a.GetCompaniesFor(It.IsAny<int>()))
                 .Returns(new List<Company>());
             ICompanyService service = new CompanyService(mock.Object);
 
-            var result = service.GetByProductId(baseProductId);
+            var result = service.GetCompaniesForProduct(baseProductId);
 
             Assert.IsInstanceOf<ServiceResult<IList<Company>>>(result);
             Assert.IsTrue(result.IsErrored);
@@ -130,19 +131,31 @@ namespace EshpTests
         public void CompanyService_GetByProductId_IdMoreThan_Success(int baseProductId)
         {
             var mock = new Mock<ICompanyProvider>();
-            mock.Setup(a => a.GetCompaniesByProduct(It.IsAny<int>()))
+            mock.Setup(a => a.GetCompaniesFor(It.IsAny<int>()))
                 .Returns(new List<Company>());
             ICompanyService service = new CompanyService(mock.Object);
 
-            var result = service.GetByProductId(baseProductId);
+            var result = service.GetCompaniesForProduct(baseProductId);
 
             Assert.IsInstanceOf<ServiceResult<IList<Company>>>(result);
             Assert.IsFalse(result.IsErrored);
         }
 
+        [Test]
         public void CompanyService_CreateCompany_NameIsEmpty_Fail()
         {
+            var mock = new Mock<ICompanyProvider>();
+            mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
+                .Returns(new List<Company>());
+            ICompanyService service = new CompanyService(mock.Object);
 
+            var newCompany = new Company { Name = String.Empty };
+
+            ServiceResult<Company> result = null;
+
+            Assert.DoesNotThrow(() => result = service.CreateCompany(newCompany));
+            Assert.IsTrue(result.IsErrored);
+            Assert.IsNull(result.Result);
         }
     }
 }

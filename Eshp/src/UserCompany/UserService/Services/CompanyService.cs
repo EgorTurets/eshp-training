@@ -16,14 +16,14 @@ namespace UserCompanyService.Services
             _companyProvider = companyProvider;
         }
 
-        public ServiceResult<Company> GetById(int id)
+        public ServiceResult<Company> Get(int id)
         {
             if (id <= 0)
             {
                 return ServiceResult<Company>.CreateErrorResult("Id must be great than 0");
             }
 
-            var result = _companyProvider.GetCompanyById(id);
+            var result = _companyProvider.GetCompany(id);
 
             return ServiceResult<Company>.CreateSuccessResult(result);
         }
@@ -43,14 +43,14 @@ namespace UserCompanyService.Services
             return ServiceResult<IList<Company>>.CreateSuccessResult(result);
         }
 
-        public ServiceResult<IList<Company>> GetByProductId(int baseProductId)
+        public ServiceResult<IList<Company>> GetCompaniesForProduct(int baseProductId)
         {
             if (baseProductId <= 0)
             {
                 return ServiceResult<IList<Company>>.CreateErrorResult("BaseProductId must be more than 0");
             }
 
-            var result = _companyProvider.GetCompaniesByProduct(baseProductId);
+            var result = _companyProvider.GetCompaniesFor(baseProductId);
 
             return ServiceResult<IList<Company>>.CreateSuccessResult(result);
         }

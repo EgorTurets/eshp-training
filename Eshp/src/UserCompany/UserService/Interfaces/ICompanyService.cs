@@ -6,11 +6,11 @@ namespace UserCompanyService.Interfaces
 {
     public interface ICompanyService
     {
-        ServiceResult<Company> GetById(int id);
+        ServiceResult<Company> Get(int id);
 
         ServiceResult<IList<Company>> GetCompanies(PageRequest pageInfo);
 
-        ServiceResult<IList<Company>> GetByProductId(int baseProductId);
+        ServiceResult<IList<Company>> GetCompaniesForProduct(int baseProductId);
 
         ServiceResult<Company> CreateCompany(Company company);
 

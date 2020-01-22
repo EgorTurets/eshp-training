@@ -6,11 +6,11 @@ namespace EshpUserCompanyProvider
 {
     public interface ICompanyProvider
     {
-        Company GetCompanyById(int id);
+        Company GetCompany(int id);
 
         IList<Company> GetCompanies(PageRequest pageInfo);
 
-        IList<Company> GetCompaniesByProduct(int baseProductId);
+        IList<Company> GetCompaniesFor(int baseProductId);
 
         Company CreateCompany(Company company);
 

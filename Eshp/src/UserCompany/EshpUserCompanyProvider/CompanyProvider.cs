@@ -22,12 +22,12 @@ namespace EshpUserCompanyProvider
             throw new NotImplementedException();
         }
 
-        public IList<Company> GetCompaniesByProduct(int baseProductId)
+        public IList<Company> GetCompaniesFor(int baseProductId)
         {
             throw new NotImplementedException();
         }
 
-        public Company GetCompanyById(int id)
+        public Company GetCompany(int id)
         {
             throw new NotImplementedException();
         }
