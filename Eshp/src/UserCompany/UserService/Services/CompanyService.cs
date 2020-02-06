@@ -97,6 +97,11 @@ namespace UserCompanyService.Services
             return ServiceResult<bool>.CreateSuccessResult(result);
         }
 
+        public ServiceResult<IList<Company>> GetCompaniesFor(int productId)
+        {
+            throw new NotImplementedException();
+        }
+
         private bool ValidatePageRequest(PageRequest pageInfo, out string message)
         {
             var messageBuilder = new StringBuilder();
@@ -113,5 +118,6 @@ namespace UserCompanyService.Services
             message = messageBuilder.ToString();
             return String.IsNullOrWhiteSpace(message);
         }
+
     }
 }

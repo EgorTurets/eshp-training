@@ -17,5 +17,7 @@ namespace UserCompanyService.Interfaces
         ServiceResult<bool> UpdateCompany(Company company);
 
         ServiceResult<bool> DeleteCompany(int id);
+
+        ServiceResult<IList<Company>> GetCompaniesFor(int productId);
     }
 }
