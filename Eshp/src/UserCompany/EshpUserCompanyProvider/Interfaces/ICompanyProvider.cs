@@ -2,7 +2,7 @@
 using EshpUserCompanyCommon.Models;
 using System.Collections.Generic;
 
-namespace EshpUserCompanyProvider
+namespace EshpUserCompanyProvider.Interfaces
 {
     public interface ICompanyProvider
     {
@@ -14,7 +14,7 @@ namespace EshpUserCompanyProvider
 
         Company CreateCompany(Company company);
 
-        bool UpdateCompany(int id, Company company);
+        bool UpdateCompany(Company company);
 
         bool DeleteCompany(int id);
     }

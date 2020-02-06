@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EshpCommon;
 using EshpUserCompanyCommon.Models;
-using EshpUserCompanyProvider;
+using EshpUserCompanyProvider.Interfaces;
 using UserCompanyService.Interfaces;
 
 namespace UserCompanyService.Services
@@ -57,17 +57,44 @@ namespace UserCompanyService.Services
 
         public ServiceResult<Company> CreateCompany(Company company)
         {
-            throw new System.NotImplementedException();
+            if (company == null)
+            {
+                return ServiceResult<Company>.CreateErrorResult("Company cannot be null");
+            }
+            if (String.IsNullOrWhiteSpace(company.Name))
+            {
+                return ServiceResult<Company>.CreateErrorResult("Name is required");
+            }
+
+            var result = _companyProvider.CreateCompany(company);
+            if (result != null)
+            {
+                return ServiceResult<Company>.CreateSuccessResult(result);
+            }
+            return ServiceResult<Company>.CreateErrorResult("Error creating Company");
         }
 
-        public ServiceResult<bool> UpdateCompany(int id, Company company)
+        public ServiceResult<bool> UpdateCompany(Company company)
         {
-            throw new System.NotImplementedException();
+            if (company == null)
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(company)} can not be null");
+            if (company.Id <= 0)
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(company.Id)} can not be less than 1");
+            if (String.IsNullOrWhiteSpace(company.Name))
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(company.Name)} is required");
+
+            var result = _companyProvider.UpdateCompany(company);
+
+            return ServiceResult<bool>.CreateSuccessResult(result);
         }
 
         public ServiceResult<bool> DeleteCompany(int id)
         {
-            throw new System.NotImplementedException();
+            if (id <= 0)
+                return ServiceResult<bool>.CreateErrorResult($"{nameof(id)} can not be less than 1");
+
+            var result = _companyProvider.DeleteCompany(id);
+            return ServiceResult<bool>.CreateSuccessResult(result);
         }
 
         private bool ValidatePageRequest(PageRequest pageInfo, out string message)

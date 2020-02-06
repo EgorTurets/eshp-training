@@ -14,7 +14,7 @@ namespace UserCompanyService.Interfaces
 
         ServiceResult<Company> CreateCompany(Company company);
 
-        ServiceResult<bool> UpdateCompany(int id, Company company);
+        ServiceResult<bool> UpdateCompany(Company company);
 
         ServiceResult<bool> DeleteCompany(int id);
     }

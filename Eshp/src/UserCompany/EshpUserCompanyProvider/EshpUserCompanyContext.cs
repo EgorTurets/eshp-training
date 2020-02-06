@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EshpUserCompanyCommon.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EshpUserCompanyProvider
 {
@@ -13,8 +14,8 @@ namespace EshpUserCompanyProvider
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
         }
+
+        public DbSet<Company> Companies { get; set; }
     }
 }

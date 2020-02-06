@@ -1,4 +1,5 @@
 ﻿using EshpProductProvider.Interfaces;
+using System;
 
 namespace EshpProductService.Helpers
 {
@@ -6,6 +7,10 @@ namespace EshpProductService.Helpers
     {
         public static bool CheckForProductBase (int productId, IProductProvider productProvider)
         {
+            if (productProvider == null)
+            {
+                throw new ArgumentNullException(nameof(productProvider));
+            }
             var entity = productProvider.GetById(productId);
             return entity.BaseProductId == null;
         }
