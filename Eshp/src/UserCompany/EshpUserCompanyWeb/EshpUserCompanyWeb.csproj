@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\EshpUserCompanyCommon\EshpUserCompanyCommon.csproj" />
+    <ProjectReference Include="..\EshpUserCompanyProvider\EshpUserCompanyProvider.csproj" />
   </ItemGroup>
 
 </Project>
