@@ -1,9 +1,11 @@
 ﻿using EshpUserCompanyCommon.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EshpUserCompanyProvider
 {
-    public class EshpUserCompanyContext : DbContext
+    public class EshpUserCompanyContext : IdentityDbContext<IdentityUser>
     {
         public EshpUserCompanyContext(DbContextOptions<EshpUserCompanyContext> options)
             : base(options)
