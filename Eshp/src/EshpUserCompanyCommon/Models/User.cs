@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace EshpUserCompanyCommon.Models
 {
@@ -10,5 +11,6 @@ namespace EshpUserCompanyCommon.Models
 
         public string Patronymic { get; set; }
 
+        public IList<UserCompany> Companies { get; set; }
     }
 }

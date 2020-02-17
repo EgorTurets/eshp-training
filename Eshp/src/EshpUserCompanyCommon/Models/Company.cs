@@ -7,6 +7,6 @@ namespace EshpUserCompanyCommon.Models
     {
         public string Address { get; set; }
 
-        public IList<User> Contacts { get; set; }
+        public IList<UserCompany> Contacts { get; set; }
     }
 }

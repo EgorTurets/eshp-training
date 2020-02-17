@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace EshpUserCompanyProvider
+namespace EshpUserCompanyProvider.DbContext
 {
     public class EshpUserCompanyContext : IdentityDbContext<IdentityUser>
     {
@@ -15,6 +15,8 @@ namespace EshpUserCompanyProvider
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ConfigureRelationships.Configure(modelBuilder);
+
             base.OnModelCreating(modelBuilder);
         }
 

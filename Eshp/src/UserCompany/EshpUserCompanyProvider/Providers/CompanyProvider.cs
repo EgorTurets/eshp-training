@@ -1,5 +1,6 @@
 ﻿using EshpCommon;
 using EshpUserCompanyCommon.Models;
+using EshpUserCompanyProvider.DbContext;
 using EshpUserCompanyProvider.Interfaces;
 using System;
 using System.Collections.Generic;

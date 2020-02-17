@@ -1,5 +1,5 @@
 ﻿using System;
-using EshpUserCompanyProvider;
+using EshpUserCompanyProvider.DbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
