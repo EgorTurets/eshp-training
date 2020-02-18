@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EshpUserCompanyProvider.DbContext
 {
-    public class EshpUserCompanyContext : IdentityDbContext<IdentityUser>
+    public class EshpUserCompanyContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public EshpUserCompanyContext(DbContextOptions<EshpUserCompanyContext> options)
             : base(options)

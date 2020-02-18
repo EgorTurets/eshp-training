@@ -1,4 +1,5 @@
 ﻿using System;
+using EshpUserCompanyCommon.Models;
 using EshpUserCompanyProvider.DbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +20,7 @@ namespace EshpUserCompanyWeb.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("UserCompany")));
 
-                services.AddDefaultIdentity<IdentityUser>()
+                services.AddDefaultIdentity<User>()
                     .AddEntityFrameworkStores<EshpUserCompanyContext>();
             });
         }
