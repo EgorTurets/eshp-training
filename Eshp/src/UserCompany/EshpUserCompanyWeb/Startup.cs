@@ -33,6 +33,8 @@ namespace EshpUserCompanyWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            DISettings.ConfigureUserCompanyServices(services);
+
             services.AddDbContext<EshpUserCompanyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserCompany")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
