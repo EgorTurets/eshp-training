@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog" Version="4.6.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Common\EshpCommon\EshpCommon.csproj" />
     <ProjectReference Include="..\..\EshpUserCompanyCommon\EshpUserCompanyCommon.csproj" />
     <ProjectReference Include="..\..\Product\EshpProductCommon\EshpProductCommon.csproj" />

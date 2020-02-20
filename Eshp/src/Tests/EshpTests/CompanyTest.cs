@@ -2,6 +2,7 @@
 using EshpUserCompanyCommon.Models;
 using EshpUserCompanyProvider;
 using EshpUserCompanyProvider.Interfaces;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -25,7 +26,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompany(It.IsAny<int>()))
                 .Returns(new Company());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<Company> result = null;
 
@@ -42,7 +43,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompany(It.IsAny<int>()))
                 .Returns(new Company());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<Company> result = null;
 
@@ -59,7 +60,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
             var pageInfo = new PageRequest(pageNumber, 10);
 
             ServiceResult<IList<Company>> result = null;
@@ -77,7 +78,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
             var pageInfo = new PageRequest(1, count);
 
             ServiceResult<IList<Company>> result = null;
@@ -95,7 +96,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
             var pageInfo = new PageRequest(pageNumber, 10);
 
             ServiceResult<IList<Company>> result = null;
@@ -113,7 +114,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompanies(It.IsAny<PageRequest>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
             var pageInfo = new PageRequest(1, count);
 
             ServiceResult<IList<Company>> result = null;
@@ -131,7 +132,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompaniesFor(It.IsAny<int>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<IList<Company>> result = null;
 
@@ -148,7 +149,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.GetCompaniesFor(It.IsAny<int>()))
                 .Returns(new List<Company>());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<IList<Company>> result = null;
 
@@ -164,7 +165,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.CreateCompany(It.IsAny<Company>()))
                 .Returns(new Company());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             Company newCompany = null;
 
@@ -182,7 +183,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.CreateCompany(It.IsAny<Company>()))
                 .Returns(new Company());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Name = String.Empty };
 
@@ -200,7 +201,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.CreateCompany(It.IsAny<Company>()))
                 .Returns((Company)null);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Name = "Name" };
 
@@ -218,7 +219,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.CreateCompany(It.IsAny<Company>()))
                 .Returns(new Company());
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Name = "Name" };
 
@@ -236,7 +237,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<bool> result = null;
             Assert.DoesNotThrow(() => result = service.UpdateCompany(null));
@@ -251,7 +252,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company {Id = id, Name = "Name" };
 
@@ -268,7 +269,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Id = id, Name = "Name" };
 
@@ -285,7 +286,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Id = 1, Name = String.Empty };
 
@@ -301,7 +302,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Id = 1, Name = "Name" };
 
@@ -319,7 +320,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.UpdateCompany(It.IsAny<Company>()))
                 .Returns(providerResult);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             var newCompany = new Company { Id = 1, Name = "Name" };
 
@@ -337,7 +338,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.DeleteCompany(It.IsAny<int>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<bool> result = null;
             Assert.DoesNotThrow(() => result = service.DeleteCompany(id));
@@ -352,7 +353,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.DeleteCompany(It.IsAny<int>()))
                 .Returns(true);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<bool> result = null;
             Assert.DoesNotThrow(() => result = service.DeleteCompany(id));
@@ -368,7 +369,7 @@ namespace EshpTests
             var mock = new Mock<ICompanyProvider>();
             mock.Setup(a => a.DeleteCompany(It.IsAny<int>()))
                 .Returns(providerResult);
-            ICompanyService service = new CompanyService(mock.Object);
+            ICompanyService service = new CompanyService(mock.Object, new Mock<ILogger>().Object);
 
             ServiceResult<bool> result = null;
             Assert.DoesNotThrow(() => result = service.DeleteCompany(1));

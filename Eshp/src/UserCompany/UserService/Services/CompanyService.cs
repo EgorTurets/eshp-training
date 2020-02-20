@@ -4,15 +4,19 @@ using System.Text;
 using EshpCommon;
 using EshpUserCompanyCommon.Models;
 using EshpUserCompanyProvider.Interfaces;
+using Microsoft.Extensions.Logging;
 using UserCompanyService.Interfaces;
 
 namespace UserCompanyService.Services
 {
     public class CompanyService : ICompanyService
     {
+        private readonly ILogger<CompanyService> _logger;
         private ICompanyProvider _companyProvider;
-        public CompanyService (ICompanyProvider companyProvider)
+
+        public CompanyService (ICompanyProvider companyProvider, ILogger<CompanyService> logger)
         {
+            _logger = logger;
             _companyProvider = companyProvider;
         }
 
